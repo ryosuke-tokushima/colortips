@@ -1,4 +1,14 @@
-　普段の服の色の組み合わせ、インテリアの配色等々
+# colortips
+
+### 画面遷移図
+Figma：https://www.figma.com/file/xFsgBU4905xIsTylMj08X5/Untitled?node-id=0%3A1&t=sIhyw7LAy8qumqi2-1
+
+■ サービス概要
+=======
+# ColorTips
+### サービス概要
+
+普段の服の色の組み合わせ、インテリアの配色等々
 　色使いに困った人たちがこのサービスを使うことで
 　配色のヒントを得られるサービスです
 
