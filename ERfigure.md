@@ -19,33 +19,38 @@ erDiagram
 		sting password "パスワード"
 		string avatar "プロフィール画像"
 		integer role "権限"
+		timestamp created_at
 		timestamp deleted_at
-    	timestamp created_at
+    	
 
   }
 
   posts {
     bigint id PK
-    references user_id FK
+    bigint user_id FK
     string title "投稿タイトル"
     text content "投稿内容"
-		string image "画像"
-		string color_palette_images "保存したcolor_palette"
-		timestamp deleted_at
-    	timestamp created_at
+	string image "画像"
+	bigint color_palette_images "保存したcolor_palette"
+	timestamp created_at
+	timestamp deleted_at
+    	
     
   }
 	
    bookmarks {
 		bigint id PK
-		references post_id FK
-		references user_id FK
+		bigint post_id FK
+		bigint user_id FK
+		timestamp created_at
+		timestamp deleted_at
+		
     }
 
   comments {
     bigint id PK
-    references post_id FK
-    references user_id FK
+    bigint post_id FK
+    bigint user_id FK
     text content "コメント内容"
     timestamp created_at
 	timestamp deleted_at
@@ -54,26 +59,35 @@ erDiagram
 
    color_palette_images {
 		bigint id PK
+		bigint user_id FK
+		bigint post_id FK
 		string color_palette_image_title "palletのタイトル"
+		timestamp created_at
+		timestamp deleted_at
+		
 	}
 
    categories{
-	 bigint id
+	 bigint id PK
 	 string category_name
-	 datetime created_at
-	 datetime deleted_at
+	 timestamp created_at
+	 timestamp deleted_at
    }
 
    category_posts{
-		bigint id
-		integer category_id
-		integer post_id
+		bigint id PK
+		integer category_id FK
+		integer post_id FK
+		timestamp created_at
+		timestamp deleted_at
     }
 	
    colors{
-		bigint id
+		bigint id PK
+		bigint color_palette_images_id FK
 		string color_name
-		datetime created_at
-		datetime deleted_at
+		timestamp created_at
+		timestamp deleted_at
 	}
+	
 ```
