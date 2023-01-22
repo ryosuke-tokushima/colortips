@@ -1,0 +1,11 @@
+current directory: /Users/tokushimaryousuke/colortips/vendor/bundle/ruby/2.5.0/gems/io-wait-0.3.0/ext/io/wait
+/Users/tokushimaryousuke/.rbenv/versions/2.5.1/bin/ruby -I /Users/tokushimaryousuke/.rbenv/versions/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20230122-16714-1q45024.rb extconf.rb
+
+current directory: /Users/tokushimaryousuke/colortips/vendor/bundle/ruby/2.5.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR=" clean
+
+current directory: /Users/tokushimaryousuke/colortips/vendor/bundle/ruby/2.5.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR="
+
+current directory: /Users/tokushimaryousuke/colortips/vendor/bundle/ruby/2.5.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR=" install
