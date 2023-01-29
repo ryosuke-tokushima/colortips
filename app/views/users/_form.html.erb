@@ -17,11 +17,25 @@
   </div>
 
   <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :password_confirmation %>
+    <%= form.text_field :password_confirmation %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
+  </div>
+
+  <div class='text-center'>
+    <%= link_to 'login page', login_path %>
   </div>
 <% end %>
