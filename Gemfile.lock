@@ -85,6 +85,10 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     digest (3.1.1)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     faraday (1.10.3)
@@ -275,6 +279,7 @@ DEPENDENCIES
   bootstrap
   byebug
   carrierwave
+  dotenv-rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mini_magick
