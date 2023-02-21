@@ -1,0 +1,6 @@
+<%= form_tag("/color_palettes/analyze", multipart: true, method: :post) do %>
+    <%= file_field_tag "image_path" %>
+    <%= submit_tag "Analyze" %>
+<% end %>
+
+
