@@ -1,0 +1,2 @@
+module ImageAnalysisHelper
+end
