@@ -1,6 +1,11 @@
 //= require_tree .
 @import "bootstrap";
 
-color_box {
+.color_box {
     width: 200px;
+}
+
+.custom-width {
+    width: 20%;
+    text-align: center;
 }
