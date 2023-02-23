@@ -31,7 +31,7 @@ require 'json'
           ColorPaletteColor.create(color_palette: @color_palette, color: color)
         end
         # リダイレクトする
-        redirect_to user_path(current_user)
+        redirect_to user_mypage_path(@user)
       else
         render :new
       end

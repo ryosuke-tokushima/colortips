@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :color_palettes do
     post 'analyze', on: :collection
   end
-
+  get '/users/:id/mypage', to: 'users#mypage', as: 'user_mypage'
  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
