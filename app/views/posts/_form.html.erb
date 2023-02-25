@@ -1,0 +1,6 @@
+<%= form_with(model: @post, local: true) do |form| %>
+    <%= form.label :color_palette %>
+    <%= form.select :color_palette, options_for_select(@color_palettes.map{ |cp| [cp.color_palette_title, cp.id] }) %>
+    <%= form.file_field :images, multiple: true %>
+    <%= form.submit '投稿' %>
+<% end %>
