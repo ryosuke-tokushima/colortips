@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
-  mount_uploader :photo, ImageUploader
+  mount_uploaders :images, ImageUploader
   belongs_to :user
   belongs_to :color_palette
-  has_many_attached :images
+
+  validates :body, presence: true
 end

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @color_palettes = @user.color_palettes.includes(:colors)
+    @posts = @user.posts
   end
 
   # GET /users/new

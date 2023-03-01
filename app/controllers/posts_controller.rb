@@ -6,15 +6,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(user_id: current_user.id)
     @color_palettes = current_user.color_palettes
   end
 
   def create
-    @post = current_user.posts.build(post_params)
-
-    if @post.save
-      redirect_to @post
+    post = current_user.posts.build(post_params)
+    if post.save
+      redirect_to root_path
     else
       render :new
     end
@@ -26,6 +25,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:color_palette, images[])
+    params.require(:post).permit(:color_palette_id,:body, { images: [] })
   end
 end
