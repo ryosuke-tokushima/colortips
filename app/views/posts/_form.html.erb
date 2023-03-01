@@ -1,0 +1,32 @@
+<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :color_palette_id %>
+      <%= form.collection_select :color_palette_id, current_user.color_palettes, :id, :color_palette_title %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :body %>
+      <%= form.text_area :body, rows: 5, class: 'form-control' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :images %>
+      <%= form.file_field :images, multiple: true, class: 'form-control' %>
+    </div>
+  
+    <%= form.submit 'Post', class: 'btn btn-primary' %>
+  <% end %>
+  
+
+<div class="row">
+    <% @color_palettes.each do |color_palette| %>
+        <div class="col-md-2">
+        <h2 style="font-size: 10px;"><%= color_palette.color_palette_title %></h2>
+        <div class="color_palette">
+            <% color_palette.colors.each do |color| %>
+            <div class="color-row custom-width" style="height: 20px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+            <% end %>
+        </div> 
+        </div>    
+    <% end %>  
+</div>    
