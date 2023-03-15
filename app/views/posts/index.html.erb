@@ -1,2 +1,45 @@
 <h1>Posts#index</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
+
+  
+<div class="container-magic-grid">
+  <% @posts.each do |post| %>
+    <div class="col-sm-2">
+        <div class="row"> 
+            <div class="color-palette">
+                <% post.color_palette.colors.each do |color| %>
+                    <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                <% end %>
+            </div>
+        </div>
+        <div class="row">      
+            <div class="image-container">
+                <% post.images.each do |image| %>
+                    <%= image_tag image.to_s, class: "postimage" %>
+                <% end %>
+            </div>
+        </div>    
+    </div>        
+  <% end %>
+</div>
+
+
+
+<script>
+  document.querySelectorAll('.image-container').forEach(function(container) {
+    // このcontainer内のすべてのpostimageについて、高さを取得する
+    var images = container.querySelectorAll('.postimage');
+    var maxHeight = 0;
+    images.forEach(function(image) {
+      var height = image.height;
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
+    // containerの高さを、color-rowの数で割って求めた高さに設定する
+    var palette = container.querySelector('.color-palette');
+    var numColors = palette.querySelectorAll('.color-row').length;
+    var paletteHeight = maxHeight / numColors;
+    palette.style.height = paletteHeight + 'px';
+  });
+</script>

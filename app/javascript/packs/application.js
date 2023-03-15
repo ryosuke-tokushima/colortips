@@ -8,8 +8,20 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
+import MagicGrid from 'magic-grid';
+window.MagicGrid = MagicGrid;
 
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', () => {
+    const magicGrid = new MagicGrid({
+      container: '.container-magic-grid',
+      animate: true,
+      gutter: 10,
+      static: true,
+    });
+    magicGrid.listen();
+});

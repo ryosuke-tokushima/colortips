@@ -1,11 +1,10 @@
 //= require_tree .
 @import "bootstrap";
 
-.color_box {
-    width: 200px;
-}
 
-.custom-width {
-    width: 20%;
-    text-align: center;
+
+.container-magic-grid div {
+    word-break: break-all;
+    display: flex;
+    padding: 0.5em;
 }

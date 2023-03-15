@@ -1,3 +1,50 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.post-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.color-palette {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.color-row {
+  width: 28px;
+  flex: 1;
+  border-radius: 0px;
+}
+
+.color-row:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.color-row:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.col-sm-2 {
+    min-width: 300px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container {
+    padding-right: 0px;
+    margin-left: 0px;
+    overflow: auto;
+}
+  
+.postimage {
+    border-radius: 10px;
+  }
