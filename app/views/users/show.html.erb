@@ -10,14 +10,14 @@
   <%= @user.email %>
 </p>
 <h4>Your ColorPalette</h4>
-<div class="container-fluid d-flex justify-content-center">
+<div class="container-fluid">
   <div class="row">
     <% @color_palettes.each do |color_palette| %>
-      <div class="col-lg-3">
+      <div class="col-md-2">
         <h2 style="font-size: 10px;"><%= color_palette.color_palette_title %></h2>
         <div class="color_palette">
           <% color_palette.colors.each do |color| %>
-            <div class="color-row custom-width" style="height: 20px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+            <div class="color-row custom-width" style="height: 15px; background-color:<%= color.closest_palette_color_html_code %>"></div>
           <% end %>
         </div> 
       </div>    
@@ -25,10 +25,10 @@
   </div> 
 </div>
 <h4>Your Post</h4>  
-<div class="container-fluid d-flex justify-content-center">
+<div class="col-sm-12 col-lg-7 mb-5">
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col-lg-4 mb-3">
+      <div class="col-lg-4 mb-8">
         <div class="card">
           <div class="card-body d-flex flex-wrap justify-content-center ">
             <div class="row">
