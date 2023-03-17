@@ -14,9 +14,11 @@
         </div>
         <div class="row">      
             <div class="image-container">
-                <% post.images.each do |image| %>
-                    <%= image_tag image.to_s, class: "postimage" %>
+              <%= link_to post_path(post) do %>
+                <% if post.images.any? %>
+                 <%= image_tag post.images.first.to_s, class: "postimage" %>
                 <% end %>
+              <% end %>  
             </div>
         </div>    
     </div>        
