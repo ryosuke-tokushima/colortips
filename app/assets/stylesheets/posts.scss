@@ -30,21 +30,54 @@
 }
 
 .col-sm-2 {
-    min-width: 300px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    display: flex;
-    justify-content: center;
+  min-width: 300px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
 }
 
 .image-container {
-    padding-right: 0px;
-    margin-left: 0px;
-    overflow: auto;
+  padding-right: 0px;
+  margin-left: 0px;
+  overflow: auto;
 }
   
 .postimage {
-    border-radius: 10px;
-  }
+  border-radius: 10px;
+}
+
+
+.color-palette-show {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.color-row-show {
+  width: 28px;
+  height: 20px; /* この行を追加 */
+  flex: 0 1 auto; /* この行を修正 */
+  border-radius: 0px;
+}
+
+.postimage {
+  margin-left: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content:  center;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    width: 90%;
+    height: 200px; /* 任意の高さに設定 */
+}
+
+
