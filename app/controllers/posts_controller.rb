@@ -14,12 +14,18 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    post = @post
-    if post.save
-      redirect_to root_path
+
+    if @post.save
+      if params[:post][:category_names].present?
+        params[:post][:category_names].split(',').each do |category_name|
+          category = Category.find_or_create_by(category_name: category_name.strip.downcase)
+          @post.categories << category
+        end
+      end 
+    redirect_to root_path
     else
       render :new
-    end
+    end 
   end
 
   def edit
@@ -28,6 +34,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:color_palette_id,:body, { images: [] })
+    params.require(:post).permit(:color_palette_id,:body, { images: [] }, :category_names)
   end
 end
+
