@@ -1,29 +1,31 @@
-<% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
-<% @extracted_data.each do |data| %>
-  <div class="w-25 p-3" style="height: 77.0px; background-color: <%= data[:closest_palette_color_html_code] %>"></div>
-  <p><%= data[:closest_palette_color] %></p>
-<% end %> 
+<div class="container">  
+  <div class="col-md-4">  
+    <% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
+    <% @extracted_data.each do |data| %>
+      <div class="w-25 p-3" style="height: 77.0px; background-color: <%= data[:closest_palette_color_html_code] %>"></div>
+      <p><%= data[:closest_palette_color] %></p>
+    <% end %>
+  </div>   
+  <div class="col-md-4">
+    <img src="data:image/png;base64,<%= @image_data %>" />
+      <%= form_with model: @color_palette, url: "/color_palettes", method: "post" do |form| %>
+        <div class="field">
+          <%= form.label :color_palette_title %>
+          <%= form.text_field :color_palette_title %>
+        </div>
+        
+        <div class="field">
+          <%= form.label :colors %>
+          <select id="selected_colors" name="color_palette[colors][]"  multiple> 
+            <% @extracted_data.each do  |data|  %>
+              <option value="<%= data[:closest_palette_color] %>|<%= data[:closest_palette_color_html_code] %>">
+                <%= data[:closest_palette_color] %>
+              </option>  
+            <% end %>  
+          </select>  
+        </div>
 
-<img src="data:image/png;base64,<%= @image_data %>" />
-
-
-
-<%= form_with model: @color_palette, url: "/color_palettes", method: "post" do |form| %>
-  <div class="field">
-    <%= form.label :color_palette_title %>
-    <%= form.text_field :color_palette_title %>
+        <%= form.submit "Submit" %>
+      <% end %>
   </div>
-  
-  <div class="field">
-    <%= form.label :colors %>
-    <select id="selected_colors" name="color_palette[colors][]"  multiple> 
-      <% @extracted_data.each do  |data|  %>
-        <option value="<%= data[:closest_palette_color] %>|<%= data[:closest_palette_color_html_code] %>">
-          <%= data[:closest_palette_color] %>
-        </option>  
-      <% end %>  
-    </select>  
-  </div>
-
-  <%= form.submit "Submit" %>
-<% end %>
+</div>      
