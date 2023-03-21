@@ -4,7 +4,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :color_palettes, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :password, length: { minimum: 3 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }

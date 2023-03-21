@@ -48,7 +48,12 @@
     <% end %>
     <% end %>
 </div>  
-
+<% if current_user && current_user.id == @post.user_id %>
+  <div class="container">
+    <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
+    <%= button_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  </div>
+<% end %>
 
    
             

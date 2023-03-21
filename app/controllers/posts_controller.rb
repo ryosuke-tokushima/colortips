@@ -14,21 +14,30 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-
+    category_list = params[:post][:category_name].split(',')
     if @post.save
-      if params[:post][:category_names].present?
-        params[:post][:category_names].split(',').each do |category_name|
-          category = Category.find_or_create_by(category_name: category_name.strip.downcase)
-          @post.categories << category
-        end
-      end 
-    redirect_to root_path
+      @post.save_category(category_list)
+      redirect_to root_path(@post), success: 'ポストを作成しました'
     else
       render :new
     end 
   end
 
   def edit
+    @post = current_user.posts.find(params[:id])
+    @category_list = @post.categories.pluck(:category_name).join(',')
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    category_list = params[:post][:category_name].delete(" ").split(",")
+    if @post.update(post_params)
+      @post.save_category(category_list)
+      redirect_to post_path(@post), success: '投稿を編集しました'
+    else
+      flash.now['danger'] = '編集に失敗しました'
+      render :edit
+    end
   end
 
   private

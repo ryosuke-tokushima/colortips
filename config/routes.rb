@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   resources :color_palettes do
     post 'analyze', on: :collection
   end
-  resources :posts, only: %i[index new create]
+  resources :posts, shallow: true do
+    resources :categories
+  end
  
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
