@@ -42,10 +42,16 @@ require 'mini_magick'
           ColorPaletteColor.create(color_palette: @color_palette, color: color)
         end
         # リダイレクトする
-        redirect_to user_mypage_path(@user)
+        redirect_to user_url(current_user)
       else
         render :new
       end
+    end
+
+    def delete
+      @color_palette = ColorPalette.find(params[:id])
+      @color_palette.destroy!
+      redirect_to user_url(current_user)
     end
 
     def new

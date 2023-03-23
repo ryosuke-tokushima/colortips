@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
+import '@fortawesome/fontawesome-free/js/all';
 import MagicGrid from 'magic-grid';
 window.MagicGrid = MagicGrid;
 
