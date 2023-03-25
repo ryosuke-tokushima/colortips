@@ -15,6 +15,13 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
+    <div class="">
+      <ul class="searchbox">
+        <%= search_form_for @search, url: posts_path do |f| %>
+          <a><%= f.text_field :color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont ,placeholder: '検索するテキストを入力...' %></a>
+          <a><%= f.submit ("検索") , class: 'search-btn'%></a>
+        <% end %>
+      </ul>
     <ul class="navbar-nav ms-auto my-2 my-lg-0">
       <li class="nav-item">
         <%= link_to profile_path, class: "user-aavatar-link" do %>
