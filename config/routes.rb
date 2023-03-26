@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
-  delete 'logout', to: 'user_sessions#destroy'
+  get 'logout', to: 'user_sessions#destroy'
 
   resources :users
   resources :posts
@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
   resources :color_palettes do
     delete :delete, on: :member
+  end
+
+  resources :users do
+    resources :posts
   end
  
   
