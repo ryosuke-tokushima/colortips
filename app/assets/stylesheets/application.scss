@@ -16,13 +16,15 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
     padding: 0.5em;
 }
 
-body {
+.body {
 	font-family: 'Varela Round', sans-serif;
 }
 .form-control {
 	box-shadow: none;		
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 16px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 .navbar {
 	background: #fff;
@@ -52,29 +54,14 @@ body {
 	color: #888;
 	font-size: 15px;
 }
-.search-box {
-	position: relative;
-}	
+
 .search-box input {
-	padding-right: 35px;
+	padding-right: 500px;
 	border-color: #dfe3e8;
-	border-radius: 10px !important;
 	box-shadow: none
 }
-.search-box .input-group-text {
-	min-width: 35px;
-	border: none;
-	background: transparent;
-	position: absolute;
-	right: 0;
-	z-index: 9;
-	padding: 7px;
-	height: 100%;
-}
-.search-box i {
-	color: #a0a5b1;
-	font-size: 19px;
-}
+
+
 .navbar a, .navbar a:active {
 	color: #888;
 	padding: 8px 20px;
@@ -93,8 +80,6 @@ body {
 }
 
 
-
-
 .form-check-label input {
 	position: relative;
 	top: 1px;
@@ -109,6 +94,7 @@ body {
 
 
 .has-search .form-control-feedback {
+    position: absolute;
     z-index: 2;
     display: block;
     width: 2.375rem;
@@ -123,3 +109,18 @@ body {
 .form-inline .input-group {
     width: 800px;
 }
+
+.flex-form {
+    display: flex;
+    align-items: center;
+}
+
+.btn-secondary{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.navbar-nav.ml-auto {
+    margin-left: 19%;
+}
+  

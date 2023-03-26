@@ -39,6 +39,16 @@
   justify-content: center;
 }
 
+.container-show {
+  min-width: 300px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
+}
+
 .image-container {
   padding-right: 0px;
   margin-left: 0px;
@@ -53,15 +63,23 @@
 .color-palette-show {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  overflow: hidden;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: stre;
 }
 
 .color-row-show {
   width: 28px;
-  height: 20px; /* この行を追加 */
-  flex: 0 1 auto; /* この行を修正 */
+  height: 20px; 
+  flex: 0 1 auto; 
   border-radius: 0px;
+}
+
+.color-row-show {
+  flex-grow: 1;
 }
 
 .postimage {
@@ -77,8 +95,16 @@
 .carousel-item img {
   object-fit: cover;
   width: 90%;
-  height: 200px; /* 任意の高さに設定 */
+  height: 200px; 
 }
 
+.DivLink{
+    position: relative;
+}
 
+.DivLink .Link{
+    position: absolute;
+    width: 100%;
+    height: 20px;
+}
 

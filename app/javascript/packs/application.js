@@ -21,8 +21,9 @@ document.addEventListener('turbolinks:load', () => {
     const magicGrid = new MagicGrid({
       container: '.container-magic-grid',
       animate: true,
-      gutter: 10,
+      gutter: 2,
       static: true,
+      useMin: true,
     });
     magicGrid.listen();
 });

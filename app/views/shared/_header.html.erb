@@ -11,24 +11,26 @@
 			<a href="/color_palettes/new" class="nav-item nav-link">Analyze Color</a>
 			<a href="/posts/new" class="nav-item nav-link">New Post</a>
 		</div>
-		<form class="navbar-form form-inline">
+		<div class="navbar-form form-inline">
     <div class="input-group search-box">
-    <%= search_form_for @search, url: posts_path do |f| %>
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fa fa-search"></i></span>
-      </div>
-      <%= f.text_field :color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont, class: "form-control", placeholder: "Search..." %>
+    <%= search_form_for @search,html: { class: 'flex-form' }, url: posts_path, method: :get do |f| %>
+      <%= f.search_field :color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont, class: "form-control", placeholder: "Search..." %>
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="button">
+          <i class="fa fa-search"></i>
+        </button>
+      </div> 
     <% end %>
   </div>
-		</form>
+		</div>
 		<div class="navbar-nav ml-auto action-buttons">
-       <%= link_to 'プロフィール', profile_path, class: "dropdown-item" %>
+       <%= link_to 'Profile', profile_path, class: "dropdown-item" %>
 		</div>
     <div class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          その他
+          Other
           </a>
-          <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-lg-left dropdown-menu-left" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">プライバシーポリシー</a>
             <a class="dropdown-item" href="#">利用規約</a>
             <a class="dropdown-item" href="#">お問合せ</a>
