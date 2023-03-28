@@ -1,14 +1,15 @@
-<div class="container">  
-  <div class="col-md-4">  
-    <% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
-    <% @extracted_data.each do |data| %>
-      <div class="w-25 p-3" style="height: 77.0px; background-color: <%= data[:closest_palette_color_html_code] %>"></div>
-      <p><%= data[:closest_palette_color] %></p>
-    <% end %>
-  </div>   
-  <div class="col-md-4">
-    <img src="data:image/png;base64,<%= @image_data %>" />
-      <%= form_with model: @color_palette, url: "/color_palettes", method: "post" do |form| %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
+      <% @extracted_data.each do |data| %>
+        <div class="w-25 p-3 mb-3" style="height: 50px; background-color: <%= data[:closest_palette_color_html_code] %>"></div>
+        <p><%= data[:closest_palette_color] %></p>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <img src="data:image/png;base64,<%= @image_data %>" />
+      <%= form_with model: @color_palette, url: "/color_palettes", method: "post", remote: true do |form| %>
         <div class="field">
           <%= form.label :color_palette_title %>
           <%= form.text_field :color_palette_title %>
@@ -16,7 +17,7 @@
         
         <div class="field">
           <%= form.label :colors %>
-          <select id="selected_colors" name="color_palette[colors][]"  multiple> 
+          <select id="selected_colors" name="color_palette[colors][]" multiple> 
             <% @extracted_data.each do  |data|  %>
               <option value="<%= data[:closest_palette_color] %>|<%= data[:closest_palette_color_html_code] %>">
                 <%= data[:closest_palette_color] %>
@@ -27,5 +28,25 @@
 
         <%= form.submit "Submit" %>
       <% end %>
+    </div>
   </div>
-</div>      
+</div>
+
+
+<script>
+$(document).ready(function() {
+  // フォームの送信ボタンを無効にする
+  $('form').find('input[type="submit"]').prop('disabled', true);
+
+  // タイトルとカラーが選択された場合にのみボタンを有効にする
+  $('form').on('input', function() {
+    var title = $('#color_palette_title').val();
+    var colors = $('#selected_colors').val();
+    if (title !== '' && colors !== null && colors.length > 0) {
+      $('form').find('input[type="submit"]').prop('disabled', false);
+    } else {
+      $('form').find('input[type="submit"]').prop('disabled', true);
+    }
+  });
+});
+</script>
