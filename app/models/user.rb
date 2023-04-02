@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  enum role: { general: 0, admin: 1 }
+
   has_many :color_palettes, dependent: :destroy
   has_many :posts, dependent: :destroy
 

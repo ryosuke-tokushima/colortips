@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    <%= color.id %>
+  </td>
+  <td>
+    <%= color.closest_palette_color %>
+  </td>
+  <td>
+    <%= color.closest_palette_color_html_code %>
+    <div class="color-row" style="width: 28px; height: 20px; background-color:<%= color.closest_palette_color_html_code %>"><div>
+  </td>
+  <td>
+    <%= l color.created_at, format: :long %>
+  </td>
+  <td>
+    <%= link_to t('defaults.show'), admin_color_path(color), class: 'btn btn-info' %>
+  </td>
+</tr>

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <%= form_with model: @post, url: admin_post_path(@post), local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.email_field :body, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :images, "投稿画像" %>
+          <% @post.images.each do |image| %>
+            <div class="image-container">
+              <%= image_tag image.to_s, class: "postimage d-block" %>
+            </div>
+          <% end %>
+          <%= f.file_field :images, multiple: true, class: "form-control" %>
+        </div>
+        <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
