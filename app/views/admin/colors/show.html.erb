@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <div class="text-right mb-3">
+      </div>
+      <table class="table table-bordered bg-white">
+        <tr>
+          <th scope="row"><%= Color.human_attribute_name(:id) %></th>
+          <td><%= @color.id %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Color.human_attribute_name(:closest_palette_color) %></th>
+          <td><%= @color.closest_palette_color %><div class="color-row" style="width: 28px; height: 20px; background-color:<%= @color.closest_palette_color_html_code %>"><div></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Color.human_attribute_name(:closest_palette_color_html_code) %></th>
+          <td><%= @color.closest_palette_color_html_code %></td>
+        </tr>          
+        <tr>
+          <th scope="row"><%= Color.human_attribute_name(:created_at) %></th>
+          <td><%= l @color.created_at, format: :long %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
