@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-
+  before_action :require_admin, only: %i[ index ]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -69,5 +69,12 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :name)
+    end
+
+    def require_admin
+      unless current_user.admin?
+        flash[:alert] = "You must be an admin to access this page."
+        redirect_to root_path
+      end
     end
 end
