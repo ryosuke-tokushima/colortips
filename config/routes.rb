@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  root to: 'posts#index'
+
+  get 'password_resets/new'
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   namespace :admin do
     root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
@@ -7,7 +13,7 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
   end
 
-  root to: 'posts#index'
+  
 
   
   
@@ -51,5 +57,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :colors
   end
+
+  resources :password_resets, only: %i[new create edit update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
+
 end

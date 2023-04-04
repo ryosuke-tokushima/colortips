@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:reset_password]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -282,7 +282,7 @@ Rails.application.config.sorcery.configure do |config|
     # How many times to apply encryption to the password.
     # Default: 1 in test env, `nil` otherwise
     #
-    user.stretches = 1 if Rails.env.test?
+    #user.stretches = 1 if Rails.env.test?
 
     # Encryption key used to encrypt reversible encryptions such as AES256.
     # WARNING: If used for users' passwords, changing this key will leave passwords undecryptable!
@@ -402,7 +402,7 @@ Rails.application.config.sorcery.configure do |config|
     # Password reset mailer class.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+      user.reset_password_mailer = UserMailer
 
     # Reset password email method on your mailer class.
     # Default: `:reset_password_email`
