@@ -1,6 +1,6 @@
 databases:
   - name: color-tips_DB
-    databaseName: color-tips_db
+    databaseName: color-tips_DB
     user: color-tips
     region: singapore
 
