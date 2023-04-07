@@ -1,7 +1,7 @@
 databases:
   - name: color-tips_DB
     databaseName: color_tips_db
-    user: color-tips
+    user: color_tips_db_user
     region: singapore
 
 services:
