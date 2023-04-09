@@ -198,7 +198,6 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.1)
     minitest (5.15.0)
     msgpack (1.6.0)
     multi_xml (0.6.0)
@@ -312,8 +311,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.2)
-      mini_portile2 (~> 2.8.0)
     ssrf_filter (1.0.8)
     strscan (3.0.5)
     thor (1.2.1)
@@ -367,7 +364,6 @@ DEPENDENCIES
   rest-client
   sass-rails (>= 6)
   sorcery
-  sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
