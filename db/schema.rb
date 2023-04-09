@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_08_165653) do
+ActiveRecord::Schema.define(version: 2023_04_09_070025) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 2023_04_08_165653) do
   end
 
   create_table "color_palette_colors", force: :cascade do |t|
-    t.integer "color_palette_id", null: false
-    t.integer "color_id", null: false
+    t.bigint "color_palette_id", null: false
+    t.bigint "color_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["color_id"], name: "index_color_palette_colors_on_color_id"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 2023_04_08_165653) do
   end
 
   create_table "color_palettes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "color_palette_title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 2023_04_08_165653) do
   end
 
   create_table "post_categories", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "category_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_post_categories_on_category_id"
@@ -81,11 +84,11 @@ ActiveRecord::Schema.define(version: 2023_04_08_165653) do
 
   create_table "posts", force: :cascade do |t|
     t.text "body"
-    t.integer "user_id", null: false
-    t.integer "color_palette_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "color_palette_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "images"
+    t.jsonb "images"
     t.index ["color_palette_id"], name: "index_posts_on_color_palette_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
