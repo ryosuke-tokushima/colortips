@@ -1,22 +1,22 @@
 databases:
-  - name: color-tips_DB
-    databaseName: color_tips_db
-    user: color_tips_db_user
+  - name: colortips_db
+    databaseName: colortips_db
+    user: ryosuke
     region: singapore
 
 services:
   - type: web
-    name: color-tips
+    name: colortips_db
     env: ruby
     region: singapore
     plan: free
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: DATABASE_URL
+      - key: <%= ENV['DATABASE_URL'] %>
         fromDatabase:
-          name: color-tips_DB
+          name: colortips_db
           property: connectionString
-      - key: RAILS_MASTER_KEY
+      - key: <%= ENV['RAILS_MASTER_KEY'] %>
         sync: false
 
