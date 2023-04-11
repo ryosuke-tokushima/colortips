@@ -81,7 +81,6 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
   database: colortips_production
   username: colortips
   password: <%= ENV['COLORTIPS_DATABASE_PASSWORD'] %>
