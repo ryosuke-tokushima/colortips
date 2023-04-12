@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <% @color_palettes.each do |color_palette| %>
-      <div class="col-md-2">
+      <div class="col-md-2" style="margin-right: 25px;">
         <h2 style="font-size: 10px;"><%= color_palette.color_palette_title %></h2>
         <div class="color_palette">
           <% color_palette.colors.each do |color| %>
