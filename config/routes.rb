@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
   end
 
+  get 'about', to: 'pages#about'
+
   
 
   
