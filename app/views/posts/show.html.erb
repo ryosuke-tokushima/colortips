@@ -7,7 +7,7 @@
 </head>
 
 <h1>Posts</h1>
-<p>Posted by: <%= @post.user.name %></p>
+<p>Posted by: <%= link_to @post.user.name, user_path(@post.user) %>
 
 <div class="container-show">
     <div class="row">
