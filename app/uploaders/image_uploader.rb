@@ -11,7 +11,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   if Rails.env.production?
     def store_dir
-      "#{Rails.root}/public/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "/mnt/colortips-uploads/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
   else
     def store_dir
@@ -26,7 +26,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
+  process convert: 'jpg'
   #Process files as they are uploaded:
   process resize_to_fit: [250, 250]
   #
