@@ -24,6 +24,10 @@ gem 'bootstrap'
 
 gem 'carrierwave'
 
+gem 'carrierwave-aws'
+
+gem 'fog-aws'
+
 gem 'mini_magick'
 
 gem 'ransack'
