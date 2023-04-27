@@ -4,33 +4,34 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<!-- Collection of nav links, forms, and other content for toggling -->
-	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-		<div class="navbar-nav">
-			<a href="/" class="nav-item nav-link">Home</a>
-			<a href="/about" class="nav-item nav-link">About</a>			
-			<a href="/color_palettes/new" class="nav-item nav-link">Analyze Color</a>
-			<a href="/posts/new" class="nav-item nav-link">New Post</a>
+	<div id="navbarCollapse" class="collapse navbar-collapse d-flex justify-content-between">
+		<div class="navbar-nav d-flex nav-item-custom">			
+			<a href="/color_palettes/new" class="nav-item nav-link flex-grow-custom"><i class="fa-solid fa-palette"></i>色分析</a>
+			<a href="/posts/new" class="nav-item nav-link flex-grow-custom"><i class="fa-solid fa-pen-to-square"></i> 新規投稿</a>
 		</div>
-		<div class="navbar-form form-inline">
-    <div class="input-group search-box">
-    <%= search_form_for @search,html: { class: 'flex-form' }, url: posts_path, method: :get do |f| %>
-      <%= f.search_field :color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont, class: "form-control", placeholder: "Search..." %>
-      <div class="input-group-append">
-        <button class="btn btn-secondary" type="button">
-          <i class="fa fa-search"></i>
-        </button>
-      </div> 
-    <% end %>
-  </div>
+		<div class="navbar-form form-inline flex-grow-custom">
+      <div class="input-group search-box">
+        <%= search_form_for @search,html: { class: 'flex-form' }, url: posts_path, method: :get do |f| %>
+          <%= f.search_field :color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont, class: "form-control", placeholder: "Search..." %>
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-search"></i>
+            </button>
+          </div> 
+        <% end %>
+      </div>
 		</div>
 		<div class="navbar-nav ml-auto action-buttons">
-       <%= link_to 'My page', user_path(current_user), class: "dropdown-item" %>
+      <%= link_to user_path(current_user), class: "dropdown-item" do %>
+        <i class="fa-solid fa-user"></i> マイページ
+      <% end %>
 		</div>
-    <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="nav-item dropdown nav-item-custom">
+          <a class="nav-link dropdown-toggle flex-grow-custom" href="#" id="navbarDropdown" role="button" data-display="static" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Other
           </a>
           <div class="dropdown-menu dropdown-menu-lg-left dropdown-menu-left" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/about">About</a>
             <a class="dropdown-item" href="#">プライバシーポリシー</a>
             <a class="dropdown-item" href="#">利用規約</a>
             <a class="dropdown-item" href="#">お問合せ</a>

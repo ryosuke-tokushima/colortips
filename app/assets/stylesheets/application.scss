@@ -56,7 +56,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 
 .search-box input {
-	padding-right: 500px;
+	padding-right: auto;
 	border-color: #dfe3e8;
 	box-shadow: none
 }
@@ -86,7 +86,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 @media (min-width: 1200px){
 	.form-inline .input-group {
-		width: 300px;
+		width: auto;
 		margin-left: 30px;
 	}
 }
@@ -107,7 +107,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 }
 
 .form-inline .input-group {
-    width: 800px;
+    width: auto;
 }
 
 .flex-form {
@@ -123,4 +123,15 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .navbar-nav.ml-auto {
     margin-left: 1%;
 }
+
+.nav-item-custom, .flex-grow-custom {
+	flex-grow: 1;
+}
   
+.nav-item-custom .nav-link {
+	text-align: center;
+}
+
+.form-inline .form-control{
+	width: 500px ;
+}
