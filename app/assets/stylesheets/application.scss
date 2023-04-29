@@ -135,3 +135,10 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .form-inline .form-control{
 	width: 500px ;
 }
+
+.selected-color {
+	border: 2px solid #000;
+	outline: 2px solid rgba(255, 255, 255, 0.5);
+  	outline-offset: -4px;
+}
+  
