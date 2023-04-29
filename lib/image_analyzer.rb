@@ -9,7 +9,7 @@ module ImageAnalyzer
         begin
           response = RestClient.post "https://api.imagga.com/v2/colors?overall_count=10&extract_object_colors=0", { :image => File.new(image_path, 'rb') }, { :Authorization => "Basic YWNjXzA1NjE5ZTllYzkxNzlkMDo3ZjY2MGMwYzBhNzk4YWY4MzgwNTc2ZTAwZDA1MjZiZg==" }
         rescue RestClient::Exception => e
-          return { error: "API request failed" }
+          return { error: "エラーが発生しました。もう一度やり直してください。" }
         end
 
         result = JSON.parse(response)
