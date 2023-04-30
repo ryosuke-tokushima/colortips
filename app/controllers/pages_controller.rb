@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-    before_action :require_login, except: [:about]
+  before_action :require_login, except: [:about]
 
-    def about 
-    end
+  def about; end
 end

@@ -10,12 +10,10 @@ class Post < ApplicationRecord
   validates :body, presence: true
 
   def save_category(sent_categories)
-    self.categories.clear # 一旦現在のカテゴリを全て削除する
+    categories.clear # 一旦現在のカテゴリを全て削除する
     sent_categories.each do |category_name|
       category = Category.find_or_create_by(category_name: category_name)
-      self.categories << category unless self.categories.include?(category)
+      categories << category unless categories.include?(category)
     end
   end
-  
-
 end

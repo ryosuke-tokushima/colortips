@@ -1,24 +1,23 @@
 class UserSessionsController < ApplicationController
-    
-    def new; end
+  def new; end
 
-    def create
-      @user = login(params[:email], params[:password])
-      if @user
-        redirect_to root_path
-      else
-        render :new
-      end
+  def create
+    @user = login(params[:email], params[:password])
+    if @user
+      redirect_to root_path
+    else
+      render :new
     end
+  end
 
-    def destroy
-      logout
-      redirect_to login_path
-    end
+  def destroy
+    logout
+    redirect_to login_path
+  end
 
-    private
+  private
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :name)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+  end
 end
