@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_search
-  before_action :require_login, except: [:new, :create, :index]
+  before_action :require_login, except: %i[new create index]
 
   def set_search
     @search = Post.ransack(params[:q])

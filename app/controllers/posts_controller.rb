@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_login, except: [:index, :show]
-  
+  before_action :require_login, except: %i[index show]
+
   def index
     @posts = Post.all.includes(:user).order(created_at: :desc)
   end
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       redirect_to root_path(@post), success: 'ポストを作成しました'
     else
       render :new
-    end 
+    end
   end
 
   def edit
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    category_list = params[:post][:category_name].delete(" ").split(",")
+    category_list = params[:post][:category_name].delete(' ').split(',')
     if @post.update(post_params)
       @post.save_category(category_list)
       redirect_to post_path(@post), success: '投稿を編集しました'
@@ -51,7 +51,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:color_palette_id,:body, { images: [] }, :category_names)
+    params.require(:post).permit(:color_palette_id, :body, { images: [] }, :category_names)
   end
 end
-

@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -61,7 +61,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.autoload_paths += %W({config.root}/app/uploaders)
+  config.autoload_paths += %w[{config.root}/app/uploaders]
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.text :body
       t.references :user, null: false, foreign_key: true
       t.references :color_palette, null: false, foreign_key: true
-      
+
       t.timestamps
     end
   end
