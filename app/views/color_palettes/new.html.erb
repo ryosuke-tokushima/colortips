@@ -3,9 +3,9 @@
     <%= flash[:alert] %>
   </div>
 <% end %>
-<%= form_tag("/color_palettes/analyze", multipart: true, method: :post) do %>
-    <%= file_field_tag "image_path" %>
-    <%= submit_tag "Analyze" %>
+<%= form_with url: "/color_palettes/analyze", local: true, method: :post, html: { multipart: true } do |form| %>
+  <%= form.file_field :image_path %>
+  <%= form.submit "Analyze" %>
 <% end %>
 
 
