@@ -1,49 +1,78 @@
-<body>
-  <h1>ColorTips - あなたのカラーパレットを共有しよう！</h1>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Slider DEMO</title>
+    <!-- CDN読み込み -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- CSSファイル読み込み -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="swiper-container vertical-slider swiper-init">
+      <div class="swiper-wrapper vertical-slider__wrapper">
+        <div class="swiper-slide vertical-slider__slide">
+          <div class="row slide">
+              <div class="col-md-6">
+              <%= image_tag 'undraw_Color_palette_re_dwy7.png', alt: "Slide 1 Image", class: "img-fluid" %>
+              </div>
+               <div class="col-md-6 text-container">
+                  <h2>ColorTips - あなたのカラーパレットを共有しよう！</h2>
+                  <p>ColorTipsは、画像から色を抽出し、オリジナルのカラーパレットを作成できるアプリです。</p>
+               </div>
+            </div>
+        </div>
+        <div class="swiper-slide vertical-slider__slide">
+          <div class="row slide">
+            <div class="col-md-6 image-container">
+  <%= image_tag 'IMG_5800.jpg', alt: 'Image 1', class: 'image img-fluid' %>
+  <%= image_tag 'lavender-field-g66b06ea01_1920.jpg', alt: "Image 2", class: 'image img-fluid' %>
+  <%= image_tag 'neom-Nnh4gV8TwlY-unsplash.jpg', alt: 'Image 3', class: 'image img-fluid' %>
+  <%= image_tag 'sunrise-g1cc6edab5_1920.jpg', alt: 'Image 4', class: 'image img-fluid' %>
 
-  <p>ColorTipsは、画像から色を抽出し、オリジナルのカラーパレットを作成できるアプリです。自分だけのカラーパレットを使って、コーディネートやインテリアの配色を考え、写真として共有することができます。</p>
-
-  <h2>主な機能</h2>
-
-  <ol>
-    <li>
-      <strong>Analyze Color</strong>: ログイン後、analyze colorで画像をアップロードすると、その画像から色が自動的に抽出されます。
-    </li>
-    <li>
-      <strong>カラーパレットの作成</strong>: 抽出された色から好きな色を1つ以上選び、カラーパレットに名前をつけて保存します。作成したカラーパレットはマイページでいつでも確認できます。
-    </li>
-    <li>
-      <strong>New Post</strong>: 作成したカラーパレットを使って、コーディネートやインテリアの配色を考えた写真を投稿し、他のユーザーと共有できます。
-    </li>
-  </ol>
-
-  <p>ColorTipsで、あなたのセンスを発揮し、インスピレーションを得てください。新しいカラーパレットを作成し、素敵な写真を共有しましょう！</p>
-</body>
-
-<div class="aboutimage-container">
-    <img class="aboutimage" src="https://images.unsplash.com/photo-1534082753658-1dcb40af5719?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
 </div>
 
-<style>
-    .aboutimage-container {
-      /* 枠の幅と高さを指定 */
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      position: relative;
-    }
+            <div class="col-md-6 text-container">
+              <h2>Analyze Color - 画像から色を抽出</h2>
+              <p>ログイン後、analyze colorで画像をアップロードすると、その画像から色が自動的に抽出されます。</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide vertical-slider__slide">
+          <div class="row slide">
+            <div class="col-md-6 image-container1">
+              <%= image_tag 'CADF6D23-4519-4363-A258-BD54AFA1BE11_1_102_o.jpeg', alt: 'Image 5', class: 'image img-fluid image-5' %>
+              <%= image_tag '4985F191-4463-4452-A1D3-C34A3D32E7E1.jpeg', alt: 'Image 6', class: 'image img-fluid image-6' %>
+              <%= image_tag 'A8A40127-EE38-4F96-AD5C-BDB2F2C943AC_1_102_o.jpeg', alt: 'Image 7', class: 'image img-fluid image-7' %>
+            </div>
+        
+           <div class="col-md-6 text-container">
+            <h2>カラーパレットの作成と管理</h2>
+            <p>抽出された色から好きな色を1つ以上選び、カラーパレットに名前をつけて保存します。
+            <br>作成したカラーパレットはマイページでいつでも確認できます。</p>
+           </div>
+          </div>
+        </div>
+        <div class="swiper-slide vertical-slider__slide">
+          <div class="row slide">
+            <div class="col-md-6 image-container2">
+            <%= image_tag '959DD8DD-4419-4F30-8279-E20BFC046687_1_201_a.jpeg', alt: 'Image 8', class: 'image img-fluid image-8' %>
+            <%= image_tag '40E8A9A4-C15B-49B6-A45C-8B721B2C2663_1_201_a.jpeg', alt: 'Image 9', class: 'image img-fluid image-9' %>
+            <%= image_tag 'AB939405-FFC5-455D-8CA4-E33AD3D2CD18_1_201_a.jpeg', alt: 'Image 10', class: 'image img-fluid image-10' %>
+            </div>
+            <div class="col-md-6 text-container">
+              <h2>New Post - 素敵な写真を共有しよう</h2>
+              <p>作成したカラーパレットを使って、コーディネートやインテリアの配色を考えた写真を投稿し、<br>他のユーザーと共有できます。</p>
+            </div>
+          </div>
+        </div>
+      <div class="swiper-pagination vertical-slider__pagination"></div>
+    </div>
 
-    .aboutimage {
-      /* 画像を中央に配置 */
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    <!-- CDN読み込み -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </body>
+</html>
 
-      /* 画像のサイズを調整 */
-      width: 100%;
-      height: auto;
-      min-height: 100%;
-      object-fit: cover;
-    }
-</style>
+
