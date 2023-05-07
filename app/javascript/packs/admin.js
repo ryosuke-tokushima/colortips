@@ -1,12 +1,14 @@
-//= require jquery3
-//= require rails_ujs
-//= require jquery_ujs
-//= require admin-lte/dist/js/adminlte.min <= ここで読み込んでる
-//= require admin-lte/plugins/jquery/jquery.min.js
-//= require admin-lte/dist/js/adminlte.min.js
-//= require admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js
+import Rails from '@rails/ujs';
+import jQuery from 'jquery';
+window.jQuery = jQuery;
+window.$ = jQuery;
+
+import 'admin-lte/plugins/jquery/jquery.min';
+import 'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min';
+import 'admin-lte/dist/js/adminlte.min';
+
+Rails.start();
 
 $(document).ready(function () {
-    $('[data-widget="pushmenu"]').PushMenu();
-  });
-  
+  $('[data-widget="pushmenu"]').PushMenu();
+});
