@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     resources :categories
   end
 
+  resources :posts do
+    resources :bookmarks, only: [:create, :destroy], shallow: true
+  end
+
   resources :color_palettes do
     delete :delete, on: :member
   end
@@ -37,6 +41,8 @@ Rails.application.routes.draw do
       get :search, to: 'posts#search'
     end
   end
+
+  get 'bookmarked_posts', to: 'posts#bookmarked'
 
   resources :users do
     resources :posts

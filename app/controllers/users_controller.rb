@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @color_palettes = @user.color_palettes.includes(:colors)
     @posts = @user.posts
+    @bookmarked_posts = current_user.bookmarked_posts
   end
 
   # GET /users/new

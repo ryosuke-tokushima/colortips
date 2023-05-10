@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :color_palettes, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :bookmarks
+  has_many :bookmarked_posts, through: :bookmarks, source: :post
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :password, length: { minimum: 3 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -14,4 +16,17 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true, presence: true
   validates :reset_password_token, presence: true, uniqueness: true, allow_nil: true
+
+
+  def bookmark(post)
+    bookmarked_posts << post
+  end
+
+  def unbookmark(post)
+    bookmarked_posts.destroy(post)
+  end
+
+  def bookmark?(post)
+    bookmarked_posts.include?(post)
+  end
 end

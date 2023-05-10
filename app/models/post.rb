@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   belongs_to :color_palette
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories, dependent: :destroy
+  has_many :bookmarks
+  has_many :bookmarked_by_users, through: :bookmarks, source: :user
 
   attr_accessor :category_names
 
