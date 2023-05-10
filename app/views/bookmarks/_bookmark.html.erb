@@ -1,0 +1,14 @@
+<% if current_user && current_user.id != @post.user_id %>
+  <span id="bookmark_button_<%= @post.id %>">
+    <% bookmark = current_user.bookmarks.find_by(post_id: @post.id) %>
+    <% if bookmark %>
+      <%= link_to bookmark_path(bookmark), method: :delete, remote: true do %>
+        <i class="fas fa-bookmark"></i>
+      <% end %>
+    <% else %>
+      <%= link_to post_bookmarks_path(@post), method: :post, remote: true do %>
+        <i class="far fa-bookmark"></i>
+      <% end %>
+    <% end %>
+  </span>
+<% end %>

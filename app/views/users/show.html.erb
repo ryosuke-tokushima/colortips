@@ -57,6 +57,28 @@
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
+<h4>Your Bookmarks</h4>
+<% @bookmarked_posts.each do |post| %>
+  <div class="col-sm-2">
+      <div class="row"> 
+          <div class="color-palette">
+              <% post.color_palette.colors.each do |color| %>
+                  <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+              <% end %>
+          </div>
+      </div>
+      <div class="row">      
+          <div class="image-container">
+            <%= link_to post_path(post) do %>
+              <% if post.images.any? %>
+               <%= image_tag post.images.first.to_s, class: "postimage" %>
+              <% end %>
+            <% end %>  
+          </div>
+      </div>    
+  </div>        
+<% end %>
+
 <script>
   $(document).on('click', '.delete-color-palette', function(e) {
     e.preventDefault();
