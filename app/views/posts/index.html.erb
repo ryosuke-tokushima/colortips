@@ -11,7 +11,7 @@
           </div>
           <div class="row">      
               <div class="image-container">
-                <%= link_to post_path(post) do %>
+              <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
                   <% if post.images.any? %>
                   <%= image_tag post.images.first.to_s, class: "postimage" %>
                   <% end %>

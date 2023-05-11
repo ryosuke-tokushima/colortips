@@ -142,3 +142,16 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   	outline-offset: -4px;
 }
   
+.custom-modal .modal-dialog {
+	max-width: 80%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+  
+  .custom-modal .modal-content {
+	height: 100%;
+	overflow-y: auto;
+}
+  

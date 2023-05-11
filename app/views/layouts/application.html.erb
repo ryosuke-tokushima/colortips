@@ -8,7 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'slider' %>
+    <%= javascript_pack_tag 'slider', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -18,5 +18,13 @@
       <%= render 'shared/before_login_header' %>
     <% end %>    
     <%= yield %>
+      <!-- Post Modal -->
+      <div class="modal fade custom-modal" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- モーダルコンテンツはAjaxで読み込まれます -->
+          </div>
+        </div>
+      </div>
   </body>
 </html>
