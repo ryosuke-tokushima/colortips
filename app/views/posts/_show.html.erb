@@ -5,14 +5,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<h1>Posts</h1>
 <p>Posted by: <%= link_to @post.user.name, user_path(@post.user) %>
 
 <div class="container-show">
     <div class="row">
       <div class="color-palette-show DivLink">
         <% @post.color_palette.colors.each do |color| %>
-          <div class="color-row-show" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>">
+          <div class="color-row-show" style="width: 70px; background-color:<%= color.closest_palette_color_html_code %>">
           <a class ="Link" href="?q[color_palette_colors_closest_palette_color_or_categories_category_name_or_body_cont]=<%=color.closest_palette_color %>"></a>
           </div>
         <% end %>
@@ -40,11 +39,12 @@
 </div>
 
 
-<div class="container">
-  <%= @post.body %>
+<div class="owter-container">
+ <div class="inner-container">
+    <%= @post.body %>
+ </div>   
 </div>
-<div class="container">
-    <strong>Categories:</strong>
+<div class="owter-container">
     <% @post.categories.each do |category| %>
     <span class="badge rounded-pill bg-secondary"><%= category.category_name %></span>
     <% unless category.equal?(@post.categories.last) %>

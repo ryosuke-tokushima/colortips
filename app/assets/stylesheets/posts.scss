@@ -77,7 +77,7 @@
 
 .container {
   display: flex;
-  align-items: stre;
+  align-items: stretch;
 }
 
 .color-row-show {
@@ -104,7 +104,7 @@
 .carousel-item img {
   object-fit: cover;
   width: 90%;
-  height: 200px; 
+  height: 300px; 
 }
 
 .DivLink{
@@ -117,3 +117,22 @@
     height: 20px;
 }
 
+.container-show {
+  background-color: #f0f0f0aa; 
+  border: 1px solid #ffffff;
+  padding: 20px; 
+  border-radius: 10px;
+}
+
+.owter-container{
+  background-color: #f0f0f0aa; 
+  border: 1px solid #ffffff;
+  padding: 10px; 
+  border-radius: 10px;
+}
+
+.inner-container {
+  background-color: #ffffff79; /* 内側の背景色 */
+  padding: 10px; /* 内側の要素にも余白をつける。この値は .container-show の padding より大きくします */
+  border-radius: 10px; /* 内側の要素にも丸みをつける */
+}
