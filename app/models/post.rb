@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :categories, through: :post_categories, dependent: :destroy
   has_many :bookmarks
   has_many :bookmarked_by_users, through: :bookmarks, source: :user
+  has_many :comments
 
   attr_accessor :category_names
 

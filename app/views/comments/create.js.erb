@@ -1,0 +1,9 @@
+<% if @comment.persisted? %>
+  var newCommentForm = $('#new_comment');
+  if (newCommentForm.length > 0) {
+    $('#comments').append('<%= j render @comment %>');
+    $('#new_comment')[0].reset();
+  } else {
+    console.error('The form with id "new_comment" does not exist.');
+  }
+<% end %>

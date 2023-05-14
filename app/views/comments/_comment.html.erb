@@ -1,0 +1,7 @@
+<p id="comment_<%= comment.id %>">
+  <strong><%= comment.user.name %>:</strong> <%= comment.comment_content %>
+
+  <% if current_user == comment.user %>
+    <%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, post_comment_path(comment.post, comment), method: :delete, data: { confirm: 'Are you sure?', remote: true } %>
+  <% end %>
+</p>
