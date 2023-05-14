@@ -51,6 +51,18 @@
         , 
     <% end %>
     <% end %>
+</div>
+<div id="comments" class="owter-container">
+  <% @post.comments.each do |comment| %>
+    <%= render 'comments/comment', comment: comment %>
+  <% end %>
+</div>  
+<div class="owter-container">
+<%= form_with(model: [ @post, Comment.new ], local: false, id: "new_comment") do |form| %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+    <%= form.text_area :comment_content, placeholder: "Add a comment..." %>
+    <%= form.submit "Submit" %>
+  <% end %>  
 </div>  
 <% if current_user && current_user.id == @post.user_id %>
   <div class="container">

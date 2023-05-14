@@ -32,6 +32,10 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [:create, :destroy], shallow: true
   end
 
+  resources :posts do   
+    resources :comments, only: [:create, :destroy]  
+  end
+
   resources :color_palettes do
     delete :delete, on: :member
   end

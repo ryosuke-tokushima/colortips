@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :bookmarks
   has_many :bookmarked_posts, through: :bookmarks, source: :post
+  has_many :comments
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :password, length: { minimum: 3 }, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
