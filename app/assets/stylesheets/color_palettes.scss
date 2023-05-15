@@ -1,3 +1,14 @@
 // Place all the styles related to the ColorPalettes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+#image-preview {
+    width: 220px; /* 画像の幅を500pxに設定 */
+    height: auto; /* 高さは幅に合わせて自動的に調整 */
+}
+
+#image_path {
+    width: 400px;
+    height: auto;
+}
+  
+  

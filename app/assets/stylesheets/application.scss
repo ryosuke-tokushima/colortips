@@ -150,8 +150,37 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 	justify-content: center;
 }
   
-  .custom-modal .modal-content {
+.custom-modal .modal-content {
 	height: 100%;
 	overflow-y: auto;
 }
   
+.upload-drop-zone {
+	height: 200px;
+	border: 2px dashed #999;
+	line-height: 200px;
+	text-align: center;
+	font-size: 20px;
+	color: #999;
+}
+  
+.upload-drop-zone.drop {
+	color: #222;
+	border-color: #222;
+}
+
+.preview{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+  
+
+.analyze-button {
+	display: block;
+	margin-right: 80px;
+	margin-top: 15px;
+	margin-left: auto;
+}
