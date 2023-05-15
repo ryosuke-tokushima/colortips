@@ -6,9 +6,23 @@ class ColorPalettesController < ApplicationController
   require 'image_analyzer'
 
   def analyze
+    if params[:image_path].blank? 
+      flash[:alert] = "画像がアップロードされていません"
+      redirect_to new_color_palette_path
+      return
+    end
+    
     image_path = params[:image_path].path
+    image_extension = File.extname(image_path)
+  
+    unless [".jpg", ".png", ".jpeg", ".gif"].include?(image_extension.downcase)
+      flash[:alert] = "無効な画像拡張子です"
+      redirect_to new_color_palette_path
+      return
+    end
+  
     result_data = ImageAnalyzer.analyze(image_path)
-
+  
     if result_data[:error]
       flash[:alert] = result_data[:error]
       redirect_to new_color_palette_path
@@ -17,6 +31,7 @@ class ColorPalettesController < ApplicationController
       @image_data = result_data[:image_data]
     end
   end
+  
 
   def create
     # カラーパレットを作成する
