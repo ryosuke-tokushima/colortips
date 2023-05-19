@@ -7,7 +7,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html { render 'posts/_show' }
+      format.js 
+    end
   end
+  
 
   def new
     @post = Post.new(user_id: current_user.id)
@@ -34,13 +39,15 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     category_list = params[:post][:category_name].delete(' ').split(',')
     if @post.update(post_params)
-      @post.save_category(category_list)
-      redirect_to post_path(@post), success: '投稿を編集しました'
+      @post.save_category(category_list) 
+      flash[:notice] = "successfully"  
+      redirect_to posts_path
     else
-      flash.now['danger'] = '編集に失敗しました'
+      flash.now['danger'] = '投稿の編集に失敗しました'
       render :edit
     end
   end
+  
 
   def destroy
     @post = current_user.posts.find(params[:id])
