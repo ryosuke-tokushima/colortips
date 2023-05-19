@@ -48,7 +48,6 @@
     <% @post.categories.each do |category| %>
     <span class="badge rounded-pill bg-secondary"><%= category.category_name %></span>
     <% unless category.equal?(@post.categories.last) %>
-        , 
     <% end %>
     <% end %>
 </div>
@@ -66,10 +65,7 @@
 </div>  
 <% if current_user && current_user.id == @post.user_id %>
   <div class="container">
-    <%= link_to "編集", edit_post_path(@post), class: "btn btn-primary" %>
+    <%= link_to "編集", edit_post_path(@post, back_url: request.original_url), class: "btn btn-primary" %>
     <%= button_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
   </div>
 <% end %> 
-
-   
-            
