@@ -1,34 +1,39 @@
 <p id="notice"><%= notice %></p>
+<h1>My page</h1>
+<div class='justify-content-center'>
+  <p>
+  <td><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '100x100' %></td>
+  </p>
+  <div class='mypage-container'>
+    <p>
+      <strong>Name:</strong>
+      <%= @user.name %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.email %>
-</p>
-<%= link_to t('defaults.edit'), edit_profile_path %>
+    <p>
+      <strong>Address:</strong>
+      <%= @user.email %>
+    </p>
+  </div>
+  <%= link_to t('defaults.edit'), edit_profile_path %>
+</div>  
 <h4>Your ColorPalette</h4>
-<div class="container">
-  <div class="row">
-    <% @color_palettes.each do |color_palette| %>
-      <div class="col-md-2" style="margin-right: 25px;">
-        <h3 style="font-size: 10px;"><%= color_palette.color_palette_title %></h3>
-        <div class="color_palette">
-          <% color_palette.colors.each do |color| %>
-            <div class="color-row custom-width" style="height: 15px; background-color:<%= color.closest_palette_color_html_code %>"></div>
-          <% end %>
-        </div>
-        <% if current_user == color_palette.user %>
-          <%= link_to delete_color_palette_path(color_palette), method: :delete, class: 'delete-color-palette', data: { confirm: 'Are you sure you want to delete this color palette?' } do %>
-            <i class="fa-solid fa-trash-can"></i>
-          <% end %>
+<div class="row justify-content-center">
+  <% @color_palettes.each do |color_palette| %>
+    <div class="col-1 col-md-1" style="margin-right: 25px;">
+      <h3 style="font-size: 10px;"><%= color_palette.color_palette_title %></h3>
+      <div class="color_palette">
+        <% color_palette.colors.each do |color| %>
+          <div class="color-row custom-width" style="height: 15px; background-color:<%= color.closest_palette_color_html_code %>"></div>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% if current_user == color_palette.user %>
+        <%= link_to delete_color_palette_path(color_palette), method: :delete, class: 'delete-color-palette', data: { confirm: 'Are you sure you want to delete this color palette?' } do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 <h4>Your Post</h4>
 <div class="row justify-content-center">
@@ -53,8 +58,6 @@
     </div>        
   <% end %>
 </div>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 
 <h4>Your Bookmarks</h4>
 <div class="row justify-content-center">
