@@ -1,3 +1,4 @@
+import Swiper from 'swiper';
 /* アドレスバー・ツールバーを除いた100vhの高さを取得 */
 function setHeight() {
     let vh = window.innerHeight * 0.01;

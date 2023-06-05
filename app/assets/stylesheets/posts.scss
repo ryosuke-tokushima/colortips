@@ -102,7 +102,7 @@
 
 .carousel-item img {
   object-fit: cover;
-  width: 90%;
+  width: 80%;
   height: 300px; 
 }
 
@@ -142,4 +142,9 @@
   padding: 10px; 
   border-radius: 10px;
   width: 350px;
+}
+
+.my-image {
+  position: relative;
+  object-fit: contain;
 }
