@@ -7,10 +7,18 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import $ from "jquery"
-import Popper from 'popper.js'
 import 'bootstrap'
 import '@fortawesome/fontawesome-free/js/all';
 import MagicGrid from 'magic-grid';
+import { showModal } from './modal';
+
+showModal();
+
+
+
+
+window.$ = $;
+window.cookie = $.cookie;
 
 window.$ = window.jQuery = $;
 window.MagicGrid = MagicGrid;
