@@ -84,23 +84,19 @@
 </div>  
 
 <script>
-  $(document).on('click', '.delete-color-palette', function(e) {
-    e.preventDefault();
-    if (confirm('Are you sure you want to delete this color palette?')) {
-      var color_palette_id = $(this).data('color-palette-id');
-      $.ajax({
-        type: 'DELETE',
-        url: '/color_palettes/' + color_palette_id,
-        success: function() {
-          // 削除されたカラーパレットを画面から削除する
-          $(e.target).closest('.col-md-2').remove();
-        },
-        error: function() {
-          alert('Failed to delete color palette');
-        }
+  window.onload = function() {
+      var images = document.querySelectorAll('.postimage');
+      images.forEach(function(image) {
+          image.onload = function() {
+              var container = image.parentNode;
+              container.style.height = image.height + 'px';
+              container.style.width = image.width + 'px';
+          }
       });
-    }
-  });
+  };
+
+
+
 
   document.querySelectorAll('.image-container').forEach(function(container) {
     // このcontainer内のすべてのpostimageについて、高さを取得する
@@ -118,4 +114,33 @@
     var paletteHeight = maxHeight / numColors;
     palette.style.height = paletteHeight + 'px';
   });
+
+  window.onload = function() {
+    $(document).on('click', '.delete-color-palette', function(e) {
+      e.preventDefault();
+      if (confirm('Are you sure you want to delete this color palette?')) {
+        var color_palette_id = $(this).data('color-palette-id');
+        $.ajax({
+          type: 'DELETE',
+          url: '/color_palettes/' + color_palette_id,
+          success: function() {
+            // 削除されたカラーパレットを画面から削除する
+            $(e.target).closest('.col-md-2').remove();
+          },
+          error: function() {
+            alert('Failed to delete color palette');
+          }
+        });
+      }
+    });
+
+    // Load時にパレットの高さを更新
+    updateColorPalettes();
+  };
+
+  // Resize時にパレットの高さを更新
+  window.onresize = function() {
+    updateColorPalettes();
+  };
+
 </script>

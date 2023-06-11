@@ -64,15 +64,18 @@
 }
 
 .image-container {
-  padding-right: 0px;
   margin-left: 0px;
+  display: flex;        /* 追加 */
+  align-items: flex-start;  /* 追加 */
   overflow: auto;
 }
   
-.postimage {
-  border-radius: 10px;
-  margin-left: 10px;
+.image-container.postimage {
+  object-fit: cover;   /* 追加 */
+  width: 100%;         /* 追加 */
+  height: auto;        /* 追加 */
 }
+
 
 
 .color-palette-show {
@@ -102,8 +105,8 @@
 
 .carousel-item img {
   object-fit: cover;
-  width: 80%;
-  height: 300px; 
+  width: 95%;
+  height: auto; 
 }
 
 .DivLink{
