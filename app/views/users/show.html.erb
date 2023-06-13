@@ -36,84 +36,58 @@
   <% end %>
 </div>
 <h4>Your Post</h4>
-<div class="row justify-content-center">
+<div class="container-userpage">
   <% @posts.each do |post| %>
-    <div class="col-sm-2">
-        <div class="row"> 
-            <div class="color-palette">
-                <% post.color_palette.colors.each do |color| %>
-                    <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
-                <% end %>
-            </div>
-        </div>
-        <div class="row">      
-            <div class="image-container">
-            <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
-                <% if post.images.any? %>
-                  <%= image_tag post.images.first.to_s, class: "postimage" %>
-                <% end %>
-              <% end %>  
-            </div>
-        </div>    
+    <div class="row1">
+      <div class="col-sm-2">
+          <div class="row"> 
+              <div class="color-palette">
+                  <% post.color_palette.colors.each do |color| %>
+                      <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                  <% end %>
+              </div>
+          </div>
+          <div class="row">      
+              <div class="image-container">
+                <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
+                    <% if post.images.any? %>
+                      <%= image_tag post.images.first.to_s, class: "postimage" %>
+                    <% end %>
+                <% end %>  
+              </div>
+          </div>    
+      </div>  
     </div>        
   <% end %>
 </div>
 
 <h4>Your Bookmarks</h4>
-<div class="row justify-content-center">
+<div class="container-userpage">
   <% @bookmarked_posts.each do |post| %>
-    <div class="col-sm-2">
-        <div class="row"> 
-            <div class="color-palette">
-                <% post.color_palette.colors.each do |color| %>
-                    <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
-                <% end %>
-            </div>
-        </div>
-        <div class="row">      
-            <div class="image-container">
-            <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
-                <% if post.images.any? %>
-                <%= image_tag post.images.first.to_s, class: "postimage" %>
-                <% end %>
-              <% end %>  
-            </div>
-        </div>    
+    <div class="row1">
+      <div class="col-sm-2">
+          <div class="row"> 
+              <div class="color-palette">
+                  <% post.color_palette.colors.each do |color| %>
+                      <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                  <% end %>
+              </div>
+          </div>
+          <div class="row">      
+              <div class="image-container">
+                <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
+                    <% if post.images.any? %>
+                      <%= image_tag post.images.first.to_s, class: "postimage" %>
+                    <% end %>
+                <% end %>  
+              </div>
+          </div>    
+      </div>  
     </div>        
   <% end %>
 </div>  
 
 <script>
-  window.onload = function() {
-      var images = document.querySelectorAll('.postimage');
-      images.forEach(function(image) {
-          image.onload = function() {
-              var container = image.parentNode;
-              container.style.height = image.height + 'px';
-              container.style.width = image.width + 'px';
-          }
-      });
-  };
-
-
-
-
-  document.querySelectorAll('.image-container').forEach(function(container) {
-    // このcontainer内のすべてのpostimageについて、高さを取得する
-    var images = container.querySelectorAll('.postimage');
-    var maxHeight = 0;
-    images.forEach(function(image) {
-      var height = image.height;
-      if (height > maxHeight) {
-        maxHeight = height;
-      }
-    });
-    // containerの高さを、color-rowの数で割って求めた高さに設定する
-    var palette = container.querySelector('.color-palette');
-    var numColors = palette.querySelectorAll('.color-row').length;
-    var paletteHeight = maxHeight / numColors;
-    palette.style.height = paletteHeight + 'px';
-  });
 
   window.onload = function() {
     $(document).on('click', '.delete-color-palette', function(e) {
@@ -133,14 +107,6 @@
         });
       }
     });
-
-    // Load時にパレットの高さを更新
-    updateColorPalettes();
-  };
-
-  // Resize時にパレットの高さを更新
-  window.onresize = function() {
-    updateColorPalettes();
-  };
+  }  
 
 </script>

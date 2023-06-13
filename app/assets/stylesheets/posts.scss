@@ -5,7 +5,6 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -64,15 +63,12 @@
 }
 
 .image-container {
-  margin-left: 0px;
-  display: flex;        /* 追加 */
-  align-items: flex-start;  /* 追加 */
-  overflow: auto;
+  width: 100%;
+  height: auto; 
 }
   
 .image-container.postimage {
-  object-fit: cover;   /* 追加 */
-  width: 100%;         /* 追加 */
+  max-width: 100%;
   height: auto;        /* 追加 */
 }
 
@@ -150,4 +146,12 @@
 .my-image {
   position: relative;
   object-fit: contain;
+}
+
+.container-userpage{
+  word-break: break-all;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5em;
 }
