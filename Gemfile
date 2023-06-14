@@ -38,8 +38,6 @@ gem 'rest-client'
 
 gem 'base64'
 
-gem 'byebug'
-
 gem 'config'
 
 gem 'rubocop', require: false
@@ -72,6 +70,8 @@ group :development do
   # gem 'spring'
 
   gem 'letter_opener_web', '~> 1.0'
+
+  gem 'rspec'
 end
 
 group :production do
