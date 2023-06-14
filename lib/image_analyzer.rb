@@ -1,4 +1,6 @@
 module ImageAnalyzer
+  MAX_RETRIES = 3
+
   def self.analyze(image_path)
     resized_image_path = resize_image(image_path)
 
@@ -6,10 +8,17 @@ module ImageAnalyzer
     api_secret = ENV['API_SECRET']
 
     auth = 'Basic ' + Base64.strict_encode64("#{api_key}:#{api_secret}").chomp
+
+    retries = 0
     begin
       response = RestClient.post 'https://api.imagga.com/v2/colors?overall_count=10&extract_object_colors=0', { image: File.new(image_path, 'rb') }, { Authorization: 'Basic YWNjXzA1NjE5ZTllYzkxNzlkMDo3ZjY2MGMwYzBhNzk4YWY4MzgwNTc2ZTAwZDA1MjZiZg==' }
     rescue RestClient::Exception => e
-      return { error: 'エラーが発生しました。もう一度やり直してください。' }
+      if retries < MAX_RETRIES
+        retries += 1
+        retry
+      else
+        return { error: 'エラーが発生しました。もう一度やり直してください。' }
+      end
     end
 
     result = JSON.parse(response)
