@@ -10,32 +10,31 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+  <div class="wrapper">
+      <h3 class="form-signin-heading">Sign up to ColorTips!</h3>
+      <hr class="colorgraph"><br>
+      <div class="form-group">
+        <%= form.text_field :name, class: 'form-control', placeholder: "Name"  %>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+      <div class="form-group">
+        <%= form.text_field :email, class: 'form-control', placeholder: "Email"  %>
+      </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
+      <div class="form-group">
+        <%= form.password_field :password, class: 'form-control', placeholder: "Password"  %>
+      </div>
+      
+      <div class="form-group">
+        <%= form.password_field :password_confirmation,class: 'form-control', placeholder: "Password Confirmation" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
+      <button class="btn btn-lg btn-primary btn-block"  name="Submit" type="Submit">Crate User</button>  
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-  <div class='text-center'>
-    <%= link_to 'login page', login_path %>
-  </div>
+      <div class='text-center'>
+        <%= link_to 'login page', login_path %>
+      </div>
+  </div>        
+</div>  
 <% end %>
