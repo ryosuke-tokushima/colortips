@@ -69,3 +69,29 @@
     <%= button_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
   </div>
 <% end %> 
+
+<h4>Recommend posts</h4>
+<div class="container-userpage">
+  <% @post.recommended_posts.each do |post| %>
+    <div class="row1">
+      <div class="col-sm-2">
+        <div class="row"> 
+            <div class="color-palette">
+                <% post.color_palette.colors.each do |color| %>
+                    <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                <% end %>
+            </div>
+        </div>
+        <div class="row">      
+            <div class="image-container">
+              <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
+                  <% if post.images.any? %>
+                    <%= image_tag post.images.first.to_s, class: "postimage" %>
+                  <% end %>
+              <% end %>  
+            </div>
+        </div>    
+      </div>  
+    </div>                
+  <% end %>
+</div>  

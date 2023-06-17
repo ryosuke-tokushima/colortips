@@ -19,4 +19,17 @@ class Post < ApplicationRecord
       categories << category unless categories.include?(category)
     end
   end
+
+  def selected_colors
+    self.color_palette.color_palette_colors.sample(2).map(&:color)
+  end
+
+  
+  def recommended_posts
+    Post.joins(color_palette: :color_palette_colors)
+        .where(color_palette_colors: { color_id: self.selected_colors.map(&:id) })
+        .where.not(id: self.id)
+        .distinct
+  end
+  
 end
