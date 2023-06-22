@@ -1,37 +1,67 @@
-<%= form_with(model: @post, url: posts_path, local: true) do |form| %>
-    <div class="form-group">
-      <%= form.label :color_palette_id %>
-      <%= form.collection_select :color_palette_id, current_user.color_palettes, :id, :color_palette_title %>
-    </div>
-  
-    <div class="form-group">
-      <%= form.label :body %>
-      <%= form.text_area :body, rows: 5, class: 'form-control' %>
-    </div>
-  
-    <div class="form-group">
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true, class: 'form-control' %>
-    </div>
+<%= javascript_pack_tag 'new_post' %>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <%= form_with(model: @post, id: 'post_form', url: posts_path, local: true) do |form| %>
+        <div class="row">
+          <div class="col-lg-6">
+            <!-- Image Upload -->
+            <div class="card">
+              <div class="card-body">
+                <div class="form-group">
+                  <%= form.file_field :images, id: 'images', multiple: true, class: 'form-control' %>
+                </div>
+                <div class="preview-images">
+                  <!-- Images will be appended here -->
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <div class="form-group">
-      <%= form.label :category_name, "New Category" %>
-      <%= form.text_field :category_name , value: @category_list%>
-    </div>
-  
-    <%= form.submit 'Post', class: 'btn btn-primary' %>
-<% end %>
-  
+          <!-- Form Input -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header bg-light ">Body</div>
+              <div class="card-body">
+                <div class="form-group">
+                  <%= form.text_area :body, rows: 5, class: 'form-control' %>
+                </div>
+              </div>
+            </div>
 
-<div class="row">
-    <% @color_palettes.each do |color_palette| %>
-        <div class="col-md-2">
-        <h3 style="font-size: 10px;"><%= color_palette.color_palette_title %></h3>
-        <div class="color_palette">
-            <% color_palette.colors.each do |color| %>
-            <div class="color-row custom-width" style="height: 20px; background-color:<%= color.closest_palette_color_html_code %>"></div>
-            <% end %>
-        </div> 
-        </div>    
-    <% end %>  
-</div>    
+            <div class="card">
+              <div class="card-header bg-light ">Category</div>
+              <div class="card-body">
+                <div class="form-group">
+                  <%= form.text_field :category_name, placeholder: "ここにカテゴリを入力(カンマ区切り)", value: @category_list, class: 'form-control', style: 'width: 300px;' %>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header bg-light">Choose Color Palette:</div>
+              <div class="card-body">
+                <div class="row">
+                  <% @color_palettes.each_with_index do |color_palette, index| %>
+                    <div class="col-md-4 color-palette-selection" id="color-palette-<%= index %>" data-id="<%= color_palette.id %>">
+                      <h3 style="font-size: 10px;"><%= color_palette.color_palette_title %></h3>
+                      <div class="color_palette">
+                        <% color_palette.colors.each do |color| %>
+                          <div class="color-row custom-width" style="height: 20px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                        <% end %>
+                      </div> 
+                    </div>    
+                  <% end %>  
+                </div>
+                <%= form.hidden_field :color_palette_id, id: "selected-palette-id" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <%= form.submit "Submit", class: "btn btn-primary mt-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>    
+</div>
