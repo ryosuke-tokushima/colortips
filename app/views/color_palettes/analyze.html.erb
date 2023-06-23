@@ -1,28 +1,44 @@
 <div class="container">
-  <div class="row">
-  <div class="col-md-6">
-  <% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
-  <%= form_with model: @color_palette, url: "/color_palettes", method: "post", remote: true do |form| %>
-    <div class="field">
-      <%= form.label :color_palette_title %>
-      <%= form.text_field :color_palette_title %>
-    </div>
-    <% @extracted_data.each do |data| %>
-      <div class="d-flex align-items-center mb-3">
-        <div class="color-box" style="width: 50px; height: 50px; background-color: <%= data[:closest_palette_color_html_code] %>">
-          <input type="checkbox" class="color-checkbox" value="<%= data[:closest_palette_color] %>|<%= data[:closest_palette_color_html_code] %>" name="color_palette[colors][]" style="display: none;">
+  <div class="card">
+    <div class="card-body"> 
+      <div class="row">
+        <!-- Image Section -->
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body"> 
+              <img src="data:image/png;base64,<%= @image_data %>" />
+            </div>  
+          </div>    
         </div>
-        <p class="ml-3"><%= data[:closest_palette_color] %></p>
+        <!-- Color Palette Form Section -->
+        <div class="col-md-6">
+          <% @extracted_data = @result['result']['colors']['image_colors'].map { |image_color| { closest_palette_color: image_color["closest_palette_color"], closest_palette_color_html_code: image_color["closest_palette_color_html_code"] } } %>
+          <%= form_with model: @color_palette, url: "/color_palettes", method: "post", remote: true do |form| %>
+            <div class="card">
+              <div class="card-header bg-light">Color Palette Title</div>
+                <div class="field">
+                  <%= form.text_field :color_palette_title %>
+                </div>  
+            </div>   
+            <div class="card">
+             <div class="card-header bg-light">Choose your colors</div>
+                <% @extracted_data.each do |data| %>
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="color-box" style="width: 50px; height: 50px; background-color: <%= data[:closest_palette_color_html_code] %>">
+                      <input type="checkbox" class="color-checkbox" value="<%= data[:closest_palette_color] %>|<%= data[:closest_palette_color_html_code] %>" name="color_palette[colors][]" style="display: none;">
+                    </div>
+                    <p class="ml-3"><%= data[:closest_palette_color] %></p>
+                  </div>
+                <% end %>
+            </div> 
+            <div class="text-right">   
+              <%= form.submit "Create color palette" %>
+            </div>  
+          <% end %>
+        </div>
       </div>
-    <% end %>
-    <%= form.submit "Create color palette" %>
-  <% end %>
-</div>
-<div class="col-md-6">
-  <img src="data:image/png;base64,<%= @image_data %>" />
-</div>
-
-  </div>
+    </div>
+  </div>    
 </div>
 
 
