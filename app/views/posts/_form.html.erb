@@ -43,7 +43,7 @@
               <div class="card-body">
                 <div class="row">
                   <% @color_palettes.each_with_index do |color_palette, index| %>
-                    <div class="col-md-4 color-palette-selection" id="color-palette-<%= index %>" data-id="<%= color_palette.id %>">
+                    <div class="col-4 color-palette-selection" id="color-palette-<%= index %>" data-id="<%= color_palette.id %>">
                       <h3 style="font-size: 10px;"><%= color_palette.color_palette_title %></h3>
                       <div class="color_palette">
                         <% color_palette.colors.each do |color| %>
