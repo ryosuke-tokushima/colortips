@@ -12,8 +12,6 @@ class Post < ApplicationRecord
 
   attr_accessor :category_names
 
-  validates :body, presence: true
-
   def save_category(sent_categories)
     categories.clear # 一旦現在のカテゴリを全て削除する
     sent_categories.each do |category_name|
