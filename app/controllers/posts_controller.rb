@@ -26,9 +26,11 @@ class PostsController < ApplicationController
       @post.save_category(category_list)
       redirect_to root_path(@post), success: 'ポストを作成しました'
     else
+      @color_palettes = ColorPalette.all  # @color_palettesの設定
       render :new
     end
   end
+  
 
   def edit
     @post = current_user.posts.find(params[:id])
