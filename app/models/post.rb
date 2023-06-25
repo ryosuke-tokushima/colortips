@@ -7,6 +7,8 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarks, source: :user
   has_many :comments, dependent: :destroy
+  validates :color_palette_id, presence: { message: 'カラーパレットを選択してください' }
+  validates :images, presence: { message: '画像を選択してください' }
 
   attr_accessor :category_names
 
