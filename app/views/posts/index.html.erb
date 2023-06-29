@@ -2,29 +2,37 @@
   <% @search_posts.each do |post| %>
     <div class="row1">
       <div class="col-sm-2">
-          <div class="row"> 
-              <div class="color-palette">
-                  <% post.color_palette.colors.each do |color| %>
-                      <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
-                  <% end %>
+        <div class="row"> 
+          <div class="card-posts d-flex flex-column">
+            <div class="d-flex">
+              <div class="color-palette mr-3">
+                <% post.color_palette.colors.each do |color| %>
+                  <div class="color-row" style="width: 28px; background-color:<%= color.closest_palette_color_html_code %>"></div>
+                <% end %>
               </div>
-          </div>
-          <div class="row">      
               <div class="image-container">
               <%= link_to post_path(post), class: 'btn', remote: true, data: { toggle: 'modal', target: '#postModal' } do %>
-                  <% if post.images.any? %>
-                  <%= image_tag post.images.first.to_s, class: "postimage" %>
-                  <% end %>
-                <% end %>  
-              </div> 
-          </div>    
+                <% if post.images.any? %>
+                  <%= image_tag post.images.first.to_s, class: "postimage", style: "max-width: 150px;" %>
+                <% end %>
+              <% end %>
+            </div>
+            </div>
+            <div class="user-info mt-3">
+              <%= image_tag post.user.avatar.url, class: 'user-avatar' if post.user.avatar.present? %>
+              <div class="user-name">
+                <%= link_to post.user.name, user_path(post.user) %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="user-name" style="margin-top: -20px">
-        <%= link_to post.user.name, user_path(post.user) %>
-      </div>
-    </div>         
+    </div>
   <% end %>
 </div>
+
+
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">

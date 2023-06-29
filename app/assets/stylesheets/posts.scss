@@ -155,3 +155,31 @@
   flex-wrap: wrap;
   padding: 0.5em;
 }
+
+.card-posts {
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+  position: relative;
+}
+
+.image-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}
